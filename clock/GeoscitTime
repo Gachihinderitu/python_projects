@@ -1,0 +1,32 @@
+# importing whole module ie the GUI tkinter
+from tkinter import *
+
+# importing strftime function to retrieve the system's time
+
+from time import strftime
+
+# creating tkinter window
+root = Tk()
+root.title('@GeoscIT Clock')
+icon = PhotoImage(file = 'Geoscit.png')
+root.iconphoto(True,icon)
+
+# creating a function that will help in displaying time on the label
+
+def time():
+	string = strftime('%H:%M:%S %p')
+	lbl.config(text=string)
+	lbl.after(1000, time)
+
+
+# Styling the label widget so that clock
+lbl = Label(root, font=('old times english', 54, 'bold'),
+			background='blue',
+			foreground='white')
+
+# Placing clock at the centre of the tkinter window
+lbl.pack(anchor='center')
+time()
+
+mainloop()
+
